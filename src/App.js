@@ -1,26 +1,63 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+	const [data, setData] = useState([
+		[0, 0, 0, 0],
+		[0, 0, 0, 0],
+		[0, 0, 0, 0],
+		[0, 0, 0, 0]
+	])
+	return (
+		<div
+			className='App'
+			style={{
+				background: '#AD9D8F',
+				width: 'max-content',
+				margin: 'auto',
+				padding: 5,
+				borderRadius: 5,
+				marginTop: 10
+			}}>
+			{data.map((row, oneIndex) => {
+				return (
+					<div style={{ display: 'flex' }} key={oneIndex}>
+						{row.map((digit, index) => (
+							<Block num={digit} key={index} />
+						))}
+					</div>
+				)
+			})}
+		</div>
+	)
+}
+const Block = ({ num }) => {
+	const { blockStyle } = style
+
+	return (
+		<div
+			style={{
+				...blockStyle,
+				color: num === 2 || num === 4 ? '#645B52' : '#F7F4EF'
+			}}>
+			{num}
+			{/* {num !== 0 ? num : ''} */}
+		</div>
+	)
 }
 
-export default App;
+const style = {
+	blockStyle: {
+		height: 80,
+		width: 80,
+		background: 'ligthgray',
+		margin: 3,
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		fontSize: 45,
+		fontWeight: '800',
+		color: 'white'
+	}
+}
+
+export default App
