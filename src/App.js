@@ -326,25 +326,93 @@ const App = () => {
 	useEvent('keydown', handleKeyDown)
 
 	return (
-		<div
-			className='App'
-			style={{
-				background: '#AD9D8F',
-				width: 'max-content',
-				margin: 'auto',
-				padding: 5,
-				borderRadius: 5,
-				marginTop: 10
-			}}>
-			{data.map((row, oneIndex) => {
-				return (
-					<div style={{ display: 'flex' }} key={oneIndex}>
-						{row.map((digit, index) => (
-							<Block num={digit} key={index} />
-						))}
+		<div className='App'>
+			<div
+				style={{
+					width: 345,
+					margin: 'auto',
+					marginTop: 30
+				}}>
+				<div style={{ display: 'flex' }}>
+					<div
+						style={{
+							fontFamily: 'sans-serif',
+							flex: 1,
+							fontWeight: '700',
+							fontSize: 60,
+							color: '#776e65'
+						}}>
+						2048
 					</div>
-				)
-			})}
+					<div
+						style={{
+							flex: 1,
+							marginTop: 'auto'
+						}}>
+						<div onClick={resetGame} style={style.newGameButton}>
+							NEW GAME
+						</div>
+					</div>
+				</div>
+				<div
+					style={{
+						background: '#AD9D8F',
+						width: 'max-content',
+						height: 'max-content',
+						margin: 'auto',
+						padding: 5,
+						borderRadius: 5,
+						marginTop: 10,
+						position: 'relative'
+					}}>
+					{gameOver && (
+						<div style={style.gameOverOverlay}>
+							<div>
+								<div
+									style={{
+										fontSize: 30,
+										fontFamily: 'sans-serif',
+										fontWeight: '900',
+										color: '#776E65'
+									}}>
+									Game Over
+								</div>
+								<div>
+									<div
+										style={{
+											flex: 1,
+											marginTop: 'auto'
+										}}>
+										<div
+											onClick={resetGame}
+											style={style.tryAgainButton}>
+											Try Again
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					)}
+					{data.map((row, oneIndex) => {
+						return (
+							<div style={{ display: 'flex' }} key={oneIndex}>
+								{row.map((digit, index) => (
+									<Block num={digit} key={index} />
+								))}
+							</div>
+						)
+					})}
+				</div>
+
+				<div style={{ width: 'inherit' }}>
+					<p class='game-explanation'>
+						<strong class='important'>How to play:</strong> Use your{' '}
+						<strong>arrow keys</strong> to move the tiles. When two
+						tiles with the same number touch, they{' '}
+						<strong>merge into one!</strong>
+					</p>
+				</div>
+			</div>
 		</div>
 	)
 }
@@ -355,10 +423,11 @@ const Block = ({ num }) => {
 		<div
 			style={{
 				...blockStyle,
+				background: getColors(num),
 				color: num === 2 || num === 4 ? '#645B52' : '#F7F4EF'
 			}}>
-			{num}
-			{/* {num !== 0 ? num : ''} */}
+			{/* {num} */}
+			{num !== 0 ? num : ''}
 		</div>
 	)
 }
