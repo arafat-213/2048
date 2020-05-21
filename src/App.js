@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import cloneDeep from 'lodash.clonedeep'
+import { useEvent, getColors } from './util'
 
 const App = () => {
 	const [data, setData] = useState([
@@ -8,6 +9,22 @@ const App = () => {
 		[0, 0, 0, 0],
 		[0, 0, 0, 0]
 	])
+
+	const [gameOver, setGameOver] = useState(false)
+
+	// Initialize
+	const initialize = () => {
+		// console.log("CALLING INITIALIZE");
+
+		let newGrid = cloneDeep(data)
+		console.log(newGrid)
+
+		addNumber(newGrid)
+		console.table(newGrid)
+		addNumber(newGrid)
+		console.table(newGrid)
+		setData(newGrid)
+	}
 
 	// AddNumber - Add an item
 	const addNumber = newGrid => {
@@ -247,6 +264,29 @@ const App = () => {
 
 		return true
 	}
+	// Reset
+	const resetGame = () => {
+		setGameOver(false)
+		const emptyGrid = [
+			[0, 0, 0, 0],
+			[0, 0, 0, 0],
+			[0, 0, 0, 0],
+			[0, 0, 0, 0]
+		]
+
+		addNumber(emptyGrid)
+		addNumber(emptyGrid)
+		setData(emptyGrid)
+	}
+
+	useEffect(() => {
+		initialize()
+		// document.addEventListener("keydown", handleKeyDown);
+	}, [])
+
+	// This is a custom function
+	//useEvent('keydown', handleKeyDown)
+
 	return (
 		<div
 			className='App'
