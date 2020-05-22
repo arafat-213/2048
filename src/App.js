@@ -272,8 +272,8 @@ const App = () => {
 	const resetGame = () => {
 		setGameOver(false)
 		const emptyGrid = [
-			[0, 0, 0, 0],
-			[0, 0, 0, 0],
+			[0, 0, 8, 0],
+			[0, 2048, 0, 0],
 			[0, 0, 0, 0],
 			[0, 0, 0, 0]
 		]
@@ -405,12 +405,40 @@ const App = () => {
 				</div>
 
 				<div style={{ width: 'inherit' }}>
-					<p class='game-explanation'>
-						<strong class='important'>How to play:</strong> Use your{' '}
-						<strong>arrow keys</strong> to move the tiles. When two
-						tiles with the same number touch, they{' '}
+					<p className='game-explanation'>
+						<strong className='important'>How to play:</strong> Use
+						your <strong>arrow keys</strong> to move the tiles. When
+						two tiles with the same number touch, they{' '}
 						<strong>merge into one!</strong>
 					</p>
+				</div>
+
+				<div
+					style={{
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center'
+					}}>
+					<button
+						onClick={() => swipeLeft()}
+						style={style.newGameButton}>
+						&#8592;
+					</button>
+					<button
+						onClick={() => swipeUp()}
+						style={style.newGameButton}>
+						&#8593;
+					</button>
+					<button
+						onClick={() => swipeDown()}
+						style={style.newGameButton}>
+						&#8595;
+					</button>
+					<button
+						onClick={() => swipeRight()}
+						style={style.newGameButton}>
+						&#8594;
+					</button>
 				</div>
 			</div>
 		</div>
