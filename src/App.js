@@ -272,8 +272,8 @@ const App = () => {
 	const resetGame = () => {
 		setGameOver(false)
 		const emptyGrid = [
-			[0, 0, 8, 0],
-			[0, 2048, 0, 0],
+			[0, 0, 0, 0],
+			[0, 0, 0, 0],
 			[0, 0, 0, 0],
 			[0, 0, 0, 0]
 		]
@@ -421,22 +421,22 @@ const App = () => {
 					}}>
 					<button
 						onClick={() => swipeLeft()}
-						style={style.newGameButton}>
+						style={{ ...style.newGameButton, fontSize: 24 }}>
 						&#8592;
 					</button>
 					<button
 						onClick={() => swipeUp()}
-						style={style.newGameButton}>
+						style={{ ...style.newGameButton, fontSize: 24 }}>
 						&#8593;
 					</button>
 					<button
 						onClick={() => swipeDown()}
-						style={style.newGameButton}>
+						style={{ ...style.newGameButton, fontSize: 24 }}>
 						&#8595;
 					</button>
 					<button
 						onClick={() => swipeRight()}
-						style={style.newGameButton}>
+						style={{ ...style.newGameButton, fontSize: 24 }}>
 						&#8594;
 					</button>
 				</div>
