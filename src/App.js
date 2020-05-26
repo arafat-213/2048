@@ -95,7 +95,7 @@ const App = () => {
 			}
 		}
 		if (JSON.stringify(oldGrid) !== JSON.stringify(newArray)) {
-			// addNumber(newArray);
+			addNumber(newArray)
 		}
 		if (dummy) {
 			return newArray
@@ -184,7 +184,7 @@ const App = () => {
 			}
 		}
 		if (JSON.stringify(b) !== JSON.stringify(oldData)) {
-			// addNumber(b)
+			addNumber(b)
 		}
 		if (dummy) {
 			return b
